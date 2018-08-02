@@ -2277,45 +2277,7 @@ font-weight: 800; display: inline;">JOMAT CarDealer</h6></a>
 	</div><!-- / .wrapper-inner -->
 </div><!-- / .wrapper -->
 
-	<script type="text/javascript">
-		var c = document.body.className;
-		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-		document.body.className = c;
-	</script>
-	<script type='text/javascript'>
-/* <![CDATA[ */
-var tmm_l10n = {"site_url":"http:\/\/cardealer.webtemplatemasters.com","allow_watch_list":"0","sticky_nav_mobile":"1","any":"Any","added_to_compare":"Selected car was successfully added to your compare list.","removed_from_compare":"Selected car was successfully removed from your compare list.","added_to_watch":"Selected car was successfully added to your watch list.","removed_from_watch":"Selected car was successfully removed from your watch list.","wait":"Wait a moment ...","add_to_watch_notice":"Only registered users can add cars to Watchlist","car_is_featured":"Car is featured from now","car_is_unfeatured":"Car is unfeatured from now","required_fields":"Please fill all required fields!","wrong_username":"Invalid username.","wrong_pass":"The password you entered for chosen username is incorrect.","currency_converter":"Currency Converter","terms_notice":"Please check our website terms of use before posting your car advertisement on the website. Thanks!","delete_car_notice":"Do you really want to delete this car?","loan_rate_updated":"Your loan rate was updated!","current_user_can_delete":"0","auth_enter_username":"Enter a username or e-mail address.","auth_lostpass_email_sent":"Check your e-mail for the confirmation link.","unfeatured_confirm":"Please confirm, that you want to unfeature this vehicle!","empty_fields":"Fill in all the fields please!","server_error":"Server error!","print_this_ad":"Print this Ad","lang_edit":"Edit","lang_updated":"Updated","lang_delete":"Delete","lang_cancel":"Cancel","lang_sure":"Sure?","lang_one_moment":"One moment","cardealer_slug":"car","lang_loading":"Loading","lang_add_location_error1":"Please enter location name!","lang_add_location_error2":"Please select country!","lang_add_location_error3":"Please select state!","lang_popup_close":"Close","lang_popup_apply":"Apply","lang_thememakers_cardealer_featured_car_set":"You have marked this car as featured","lang_thememakers_cardealer_featured_car_unset":"You have unmarked this car as featured","lang_tmm_cardealer_draft_car_set":"You have marked this car as draft","lang_tmm_cardealer_sold_car_set":"You have marked this car as sold","lang_tmm_cardealer_draft_car_unset":"You have unmarked this car as draft","lang_tmm_cardealer_sold_car_unset":"You have unmarked this car as sold","lang_tmm_enter_data_right":"Please enter the correct data accordingly!","lang_have_data_saved":"Pleae make sure you saved the data!","lang_sure2":"You do not need this. Right?","featured_confirm":"This is to confirm that you're setting this car as \\\"featured\\\". That means, you will not be able to re-use this feature to any other car during the period of \\u221E day(s). One point of \\\"Featured car\\\" will be automatically deducted from your account after your confirmation."};
-var ajaxurl = "\/wp-admin\/admin-ajax.php";
-/* ]]> */
-</script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/themes/cardealer/js/vendor-min37cb.js?ver=4.9.7'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var tmm_mail_l10n = {"captcha_image_url":"http:\/\/cardealer.webtemplatemasters.com\/wp-content\/themes\/cardealer\/helper\/capcha\/image.php","wrong_field_value":"Please enter correct","success":"Your message has been sent successfully!","fail":"Server failed. Send later"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/js/min/front.min37cb.js?ver=4.9.7'></script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min44fd.js?ver=2.70'></script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min6b25.js?ver=2.1.4'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min6b00.js?ver=3.4.0'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_ecc7f57132700d1bc1a6c2d74695ad59","fragment_name":"wc_fragments_ecc7f57132700d1bc1a6c2d74695ad59"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min6b00.js?ver=3.4.0'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"http:\/\/cardealer.webtemplatemasters.com\/shop\/cart-page\/","is_cart":"","cart_redirect_after_add":"no"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-content/themes/cardealer/woocommerce/assets/js/frontend/add-to-cart37cb.js?ver=4.9.7'></script>
-<script type='text/javascript' src='../10.150.35.18_80/cardealer.webtemplatemasters.com/wp-includes/js/wp-embed.min37cb.js?ver=4.9.7'></script>
+<script src="<?php echo base_url(); ?>/assets/vendors/vendor-min.js" ></script>
 <script src="<?php echo base_url(); ?>/assets/vendors/jquery.flexslider-min.js" ></script>
 </body>
 

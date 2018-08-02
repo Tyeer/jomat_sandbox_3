@@ -25,7 +25,7 @@
     <!-- Scripts Global -->
 
         <!-- jQuery -->
-        <script src="<?php echo base_url(); ?>assets/vendors/jquery-3.2.1.min.js" ></script>
+        <script src="<?php echo base_url(); ?>assets/vendors/jquery.js" ></script>
 
     <!-- Scripts templating -->
     <?php if(isset($js_links)){ foreach($js_links as $key=> $value){ ?>
