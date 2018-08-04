@@ -174,7 +174,7 @@ font-weight: 800; display: inline;">JOMAT CarDealer</h6></a>
 
 <nav id="navigation" class="navigation clearfix">
 
-	<ul id="menu-primary-menu" class="menu"><li id="menu-item-107" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children menu-item-107"><a href="index.html">Home</a>
+	<ul id="menu-primary-menu" class="menu"><li id="menu-item-107" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children menu-item-107"><a href="home">Home</a>
 <ul class="sub-menu">
 	<li id="menu-item-655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-655"><a href="index.html">Home Classic</a></li>
 	<li id="menu-item-765" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-765"><a href="home/home-layerslider/index.html">Home LayerSlider</a></li>
@@ -183,7 +183,7 @@ font-weight: 800; display: inline;">JOMAT CarDealer</h6></a>
 	<li id="menu-item-698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-698"><a href="home/home-alternate-3/index.html">Home Alternate 3</a></li>
 </ul>
 </li>
-<li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-108"><a href="inventory/index.html">Browse Inventory</a>
+<li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-108"><a href="listings/land">Browse Inventory</a>
 <ul class="sub-menu">
 	<li id="menu-item-505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-505"><a href="inventory/index.html">Inventory</a></li>
 	<li id="menu-item-658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-658"><a href="inventory/inventory-alternate-1/index.html">Inventory Alternate 1</a></li>
@@ -225,8 +225,8 @@ font-weight: 800; display: inline;">JOMAT CarDealer</h6></a>
 	<li id="menu-item-501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-501"><a href="submit-ad-step4/index.html">Submit Ad &#8211; Step4</a></li>
 </ul>
 </li>
-<li id="menu-item-710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-710"><a href="shop/index.html">About Us</a></li>
-<li id="menu-item-128" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-128"><a href="contacts/index.html">Contacts</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-710"><a href="contact">About Us</a></li>
+<li id="menu-item-128" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-128"><a href="contact">Contacts</a></li>
 </ul>
 </nav><!--/ .navigation-->
 				</div>
