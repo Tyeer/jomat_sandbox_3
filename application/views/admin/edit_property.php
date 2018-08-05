@@ -20,7 +20,7 @@
         assets/vendors/iCheck/icheck.min.js
      */
 
-    $page_data['page_title']='Mpima Edit Property';
+    $page_data['page_title']='Edit Property '.SITE_NAME;
     $page_data['css_links']=array( 'assets/css/admin.min.css',
                                     'assets/vendors/dropzone/dist/min/dropzone.min.css',
                                     'assets/vendors/Holdon/HoldOn.min.css',

@@ -1,15 +1,27 @@
       <title>
-      <?php if(isset($page_title)) echo($page_title); else echo "Mpima"; ?> 
+      <?php if(isset($page_title)) echo($page_title); else echo SITE_NAME; ?> 
       </title>
 
-    
     <!-- Meta, title, CSS, favicons, etc. -->
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta charset="utf-8">
+
+    <!--[if lt IE 9]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <![endif]-->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <!--[if ie]>
+      <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" />
+      <![endif]-->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link rel="alternate" type="application/rss+xml" title="CarDealer RSS Feed" href="../../feed/index.html" />
+      <link rel="pingback" href="../../xmlrpc.php" />
+      <meta property="og:url"            content="index.html" />
+      <meta property="og:title"          content="<?php if(isset($page_title)) echo($page_title); else echo SITE_NAME; ?>" />
+      <meta property="og:description"    content="<?php if(isset($page_description)) echo($page_description); else echo SITE_NAME; ?>" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="description" content="Mpima Investiments">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+      <meta name="description" content="<?php if(isset($page_description)) echo($page_description); else echo SITE_NAME; ?>">
+      
 
    
     <!-- CSS Global -->

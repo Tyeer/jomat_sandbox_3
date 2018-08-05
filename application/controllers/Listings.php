@@ -177,7 +177,7 @@ class Listings extends CI_Controller {
 	}
  
 
-	public function land()
+	public function cars()
 	{
 		/*##################################
 		 0.	Define General Variables
@@ -322,7 +322,7 @@ class Listings extends CI_Controller {
 
 		$data['page_data']['item']= $model_data;	
 		$data['page_data']['url_parameters']= $url_parameters;	
-		$this->load->view('listings/listings_land',$data);
+		$this->load->view('listings/listings_cars',$data);
 
 	}
 

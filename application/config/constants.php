@@ -119,4 +119,4 @@ defined('SITE_VERSION')        	OR define('SITE_VERSION', 'desktop');
 |
 |
 */
-defined('SITE_NAME')        	OR define('SITE_NAME', 'Mpima'); 
+defined('SITE_NAME')        	OR define('SITE_NAME', 'Jomat Car Dealer'); 

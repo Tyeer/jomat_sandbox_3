@@ -57,7 +57,7 @@ $route['(?i)home'] = 'home';
 
 #listings
 $route['(?i)listings/property'] = 'listings';
-$route['(?i)listings/land'] = 'listings/land';
+$route['(?i)listings'] = 'listings/cars';
 $route['(?i)listings_single/(:num)'] = 'listings/listings_single';
 #------
 

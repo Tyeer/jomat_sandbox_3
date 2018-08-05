@@ -23,7 +23,7 @@
         assets/vendors/iCheck/icheck.min.js
      */
 
-    $page_data['page_title']='Mpima Login';
+    $page_data['page_title']='Login '.SITE_NAME;
     $page_data['css_links']=array( 'assets/css/sign_in.css',
                                 );
 
