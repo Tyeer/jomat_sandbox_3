@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="col-md-4 col-xs-9">
 					<div class="logo">
-						<a title="Buy / Sell Car online | CarDealer WordPress Theme" href="index.html">
+						<a  href="<?php echo base_url(); ?>">
 							<img				src="<?php echo IMAGE_SRC_URL;?>media/uploads/2014/09/logos.png" alt="" />
 							<h6 style="color: #6394f7;
 								font-size: 40px;
