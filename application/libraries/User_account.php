@@ -62,11 +62,6 @@ class User_account
         //load userInfo vars globally  
           $this->CI->load->vars('ownerUserInfo',$this->ownerUserInfo);
       }
-
-      //load categories vars globally
-      $this->CI->load->model('category_model');
-      $categories = $this->CI->category_model->getCategory();      
-      $this->CI->load->vars('categories',$categories);
          
       if(!$this->login && $data['redirect_unlogged'])
       {

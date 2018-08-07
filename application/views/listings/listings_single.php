@@ -142,14 +142,14 @@
 											<div class="row">
 												<div class="col-md-8">
 													<h2 class="section-title">
-														BMW I8  '2013					
+														<?php echo $page_data['item']['data']['records'][0]['item_name']; ?>				
 													</h2>
 													<!-- /.page-title -->
 												</div>
 												<div class="col-md-4 price-title">
 													<h6>Price:</h6>
 													<div class="price">
-														<span class="convert" data-convert="115500">&euro;115.500</span>
+														<span class="convert" data-convert="115500"><?php echo $page_data['item']['data']['records'][0]['price']; ?></span>
 													</div>
 												</div>
 											</div>
@@ -160,7 +160,7 @@
 												<div class="row">
 													<div class="col-md-8">
 														<div class="car-location">
-															<b>Location: </b><i>Germany / Hesse / Alsberg</i>
+															<b>Location: </b><i><?php echo $page_data['item']['data']['records'][0]['location_name']; ?></i>
 														</div>
 													</div>
 													<div class="col-md-4">
@@ -218,27 +218,25 @@
 													<li>YOR:</li>
 													<li>2013</li>
 													<li>Mileage:</li>
-													<li>150000 km</li>
+													<li><?php echo $page_data['item']['data']['records'][0]['mileage']; ?> km</li>
 													<li>Engine Size:</li>
 													<li>2.0L</li>
 													<li>Engine Type:</li>
 													<li class="engine-type">e</li>
-													<li>Gearbox:</li>
-													<li>Automatic</li>
+													<li>Transmission:</li>
+													<li><?php echo $page_data['item']['data']['records'][0]['transmission_name']; ?></li>
 													<li>Fuel:</li>
 													<li>Electric</li>
 													<li>Body Style:</li>
 													<li class="body-style">Coupe</li>
 													<li>Doors:</li>
-													<li>4</li>
+													<li><?php echo $page_data['item']['data']['records'][0]['door_count']; ?></li>
 													<li>Int Color:</li>
-													<li>White</li>
+													<li><?php echo $page_data['item']['data']['records'][0]['interior_color_name']; ?></li>
 													<li>Ext Color:</li>
-													<li>Black</li>
-													<li>Owners:</li>
-													<li>1</li>
+													<li><?php echo $page_data['item']['data']['records'][0]['exterior_color_name']; ?></li>
 													<li>Condition:</li>
-													<li>used</li>
+													<li><?php echo $page_data['item']['data']['records'][0]['condition_name']; ?></li>
 												</ul>
 												<h6 class="section-title">Public Info:</h6>
 												<ul class="data-list">
@@ -255,7 +253,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<h3 class="section-title">Additional Info</h3>
-												<p>BMW i8 Concept plug-in hybrid electric vehicle includes an electric motor located in the front axle powering the front wheels rated 96 kW (131 PS; 129 hp) and 250 N·m (184 lb·ft), a turbocharged 1.5-liter 3-cylinder gasoline engine driving rear wheels rated 164 kW (223 PS; 220 hp) and 300 N·m (221 lb·ft) of torque, with combined output of 260 kW (354 PS; 349 hp) and (Corsican). Together with the positioning of the motor and engine over the axles, the result is an optimum 50/50 weight distribution.</p>
+												<p><?php echo $page_data['item']['data']['records'][0]['item_description']; ?></p>
 												<div class="content-tabs">
 													<ul class="tabs-nav">
 														<li>

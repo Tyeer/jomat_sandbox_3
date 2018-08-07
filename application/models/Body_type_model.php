@@ -1,5 +1,5 @@
 <?php
-class Type_model extends CI_Model {
+class Body_type_model extends CI_Model {
 
     //default variables
     private $addition_info="";
@@ -23,7 +23,7 @@ class Type_model extends CI_Model {
              $this->fail_result=false;
     } 
 
-	public function getType($filters=array())
+	public function getBody_type($filters=array())
 	{
 	        //reset variables
 			$this->reset_defaults();
@@ -35,7 +35,7 @@ class Type_model extends CI_Model {
 			$result=array();
 			$total_records=false;		 
 			$get_total_records=false;
-			$filteringCondtion=' AND ';
+			$filteringBodyType=' AND ';
 			$from=0;$take=20;		 
  
 			if(isset($filters['from']))
@@ -56,10 +56,10 @@ class Type_model extends CI_Model {
 				unset($filters['get_total_records']);
 			}	
 
-			if(isset($filters['filtering_condtion']))
+			if(isset($filters['filtering_condition']))
 			{ 	
-				$filteringCondtion=$filters['filtering_condtion'];
-				unset($filters['filtering_condtion']);
+				$filteringBodyType=$filters['filtering_condition'];
+				unset($filters['filtering_condition']);
 			}	
 
 		
@@ -84,11 +84,11 @@ class Type_model extends CI_Model {
            		$miniWhereSubQueryArry=array();			   
 			   	foreach($valueFormated as $key2 => $value2)
 			   	{
-					if($key==='type_id' || ($key==='type_id'.$n) )
+					if($key==='body_type_id' || ($key==='body_type_id'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`id`=:id'.$n ); 
 						$n++;
-					}elseif($key==='type_name' || ($key==='type_name'.$n) )
+					}elseif($key==='body_type_name' || ($key==='body_type_name'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`name`=:name'.$n ); 
 						$n++;
@@ -109,9 +109,9 @@ class Type_model extends CI_Model {
 			}
 				
 			$WheresubQuery="";
-			$filteringCondtion=' '.$filteringCondtion.' ';
+			$filteringBodyType=' '.$filteringBodyType.' ';
 			if(!empty($WhereSubQueryArry))
-			$WheresubQuery='WHERE '.implode($filteringCondtion,$WhereSubQueryArry);			 
+			$WheresubQuery='WHERE '.implode($filteringBodyType,$WhereSubQueryArry);			 
 		 
 			$get_total_recordsQuery="";
 			if($get_total_records)
@@ -122,7 +122,7 @@ class Type_model extends CI_Model {
 			 
 			$dbquery1 =  $this->db->conn_id->prepare("									
 														SELECT ".$get_total_recordsQuery." * 
-														FROM `type` 
+														FROM `body_type` 
 														 	".$WheresubQuery."
 
 														GROUP BY `id`
@@ -144,10 +144,10 @@ class Type_model extends CI_Model {
 
 				   	foreach($valueFormated as $key2 => $value2)
 				   	{					   
-						if($key==='type_id' || ($key==='type_id'.$n) ) 
+						if($key==='body_type_id' || ($key==='body_type_id'.$n) ) 
 						{$dbquery1->bindValue(":id".$n,$value2); 	$n++;}
 						
-						if($key==='type_name' || ($key==='type_name'.$n) ) 
+						if($key==='body_type_name' || ($key==='body_type_name'.$n) ) 
 						{$dbquery1->bindValue(":name".$n,$value2); $n++; }
 						
 									
@@ -181,9 +181,9 @@ class Type_model extends CI_Model {
 						
 							//do some format
 							$result[$key]=array(									
-												"type_id"=>$value['id'],
-												"type_name"=>$value['name'],
-												"type_rank"=>$value['rank'],
+												"body_type_id"=>$value['id'],
+												"body_type_name"=>$value['name'],
+												"body_type_rank"=>$value['rank'],
 												);
 						}
 					}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2018 at 10:07 AM
+-- Generation Time: Aug 07, 2018 at 02:00 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -17,8 +17,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `mpima`
+-- Database: `jomat`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `body_type`
+--
+
+CREATE TABLE IF NOT EXISTS `body_type` (
+  `name` varchar(15) NOT NULL,
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `body_type`
+--
+
+INSERT INTO `body_type` (`name`, `id`, `date`, `rank`) VALUES
+('salon', 1, '2018-08-07 09:10:21', '1'),
+('truck', 2, '2018-08-07 09:10:21', '1');
 
 -- --------------------------------------------------------
 
@@ -35,30 +57,6 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `user_id` (`user_id`),
   KEY `item_id` (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
-
-CREATE TABLE IF NOT EXISTS `category` (
-  `parent_id` bigint(255) NOT NULL,
-  `id` bigint(255) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`parent_id`, `id`, `name`, `rank`, `date`) VALUES
-(1, 2, 'Houses', '6', '2016-04-05 17:22:37'),
-(1, 3, 'Plot', '5', '2016-04-05 17:52:14'),
-(1, 4, 'Land', '3', '2016-04-05 17:53:44');
 
 -- --------------------------------------------------------
 
@@ -82,6 +80,51 @@ CREATE TABLE IF NOT EXISTS `change_email_confirm` (
 
 INSERT INTO `change_email_confirm` (`confirm_code`, `user_id`, `email`, `date`, `status`) VALUES
 ('9d0428f970e64525a951', 1, 'tiya@gmail.com', '2016-03-13 12:39:35', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `color`
+--
+
+CREATE TABLE IF NOT EXISTS `color` (
+  `name` varchar(15) NOT NULL,
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `color`
+--
+
+INSERT INTO `color` (`name`, `id`, `date`, `rank`) VALUES
+('white', 1, '2018-08-07 09:08:23', '1'),
+('black', 2, '2018-08-07 09:08:23', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `condition`
+--
+
+CREATE TABLE IF NOT EXISTS `condition` (
+  `name` varchar(15) NOT NULL,
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `condition`
+--
+
+INSERT INTO `condition` (`name`, `id`, `date`, `rank`) VALUES
+('new', 1, '2018-08-07 09:07:38', '1'),
+('used', 2, '2018-08-07 09:07:38', '1'),
+('damaged', 3, '2018-08-07 09:07:55', '1');
 
 -- --------------------------------------------------------
 
@@ -186,6 +229,28 @@ CREATE TABLE IF NOT EXISTS `followed_page` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fuel_type`
+--
+
+CREATE TABLE IF NOT EXISTS `fuel_type` (
+  `name` varchar(15) NOT NULL,
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `fuel_type`
+--
+
+INSERT INTO `fuel_type` (`name`, `id`, `date`, `rank`) VALUES
+('petrol', 1, '2018-08-07 09:09:54', '1'),
+('diesel', 2, '2018-08-07 09:09:54', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
@@ -193,63 +258,48 @@ CREATE TABLE IF NOT EXISTS `item` (
   `item_id` bigint(255) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(255) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `category_id` bigint(255) NOT NULL,
   `price` varchar(100) NOT NULL,
-  `condition_id` bigint(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `on_display` enum('0','1') NOT NULL DEFAULT '1',
   `description` varchar(2200) NOT NULL,
   `item_pic` varchar(5000) NOT NULL,
   `deleted_by_seller` enum('0','1') NOT NULL DEFAULT '0',
   `location_id` bigint(255) NOT NULL,
-  `type_id` bigint(255) NOT NULL,
   `summary` varchar(700) NOT NULL,
+  `model_id` bigint(255) NOT NULL,
+  `year_of_make` int(4) NOT NULL,
+  `body_type_id` bigint(255) NOT NULL,
+  `fuel_type_id` bigint(255) NOT NULL,
+  `exterior_color_id` bigint(255) NOT NULL,
+  `interior_color_id` bigint(255) NOT NULL,
+  `door_count` int(2) NOT NULL,
+  `mileage` int(7) NOT NULL,
+  `transmission_id` bigint(255) NOT NULL,
+  `engine_size` float NOT NULL,
+  `condition_id` bigint(255) NOT NULL,
   PRIMARY KEY (`item_id`),
   KEY `user_id` (`user_id`),
-  KEY `category_id` (`category_id`),
-  KEY `condition_id` (`condition_id`),
-  KEY `type_id` (`type_id`,`location_id`),
+  KEY `type_id` (`location_id`),
   KEY `location_id` (`location_id`),
-  KEY `category_id_2` (`category_id`),
+  KEY `model_id` (`model_id`),
+  KEY `model_id_2` (`model_id`),
+  KEY `body_type_id` (`body_type_id`),
+  KEY `fuel_type_id` (`fuel_type_id`),
+  KEY `exterior_color_id` (`exterior_color_id`),
+  KEY `fuel_type_id_2` (`fuel_type_id`),
+  KEY `interior_color_id` (`interior_color_id`),
+  KEY `transmission_id` (`transmission_id`),
+  KEY `condition_id` (`condition_id`),
   FULLTEXT KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `user_id`, `name`, `category_id`, `price`, `condition_id`, `date`, `on_display`, `description`, `item_pic`, `deleted_by_seller`, `location_id`, `type_id`, `summary`) VALUES
-(3, 1, 'Nkolokosa', 2, '300000', 1, '2018-06-06 07:59:44', '1', '2 bedroom house best condtion', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_22/dc3f8e1d2ca73ce0c1db|#$(delimiter-2)$#|0|#$(delimiter-1)$#|1|#$(delimiter-2)$#|media/user/1/image/item/2018_22/9cfc8c65f18cd066dae9|#$(delimiter-2)$#|0', '0', 1, 1, '2 bedroom house best condtion'),
-(5, 1, 'Bangwe township', 4, '708880', 1, '2018-06-06 07:59:44', '1', 'Bangwe township', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_22/dd98133c29b2e005a1cf|#$(delimiter-2)$#|0', '0', 1, 2, 'Bangwe township morden'),
-(8, 1, 'Ndirande', 2, '200000', 1, '2018-07-06 22:17:52', '1', 'nice', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_27/f9d1f9796819ba818abf|#$(delimiter-2)$#|0|#$(delimiter-1)$#|1|#$(delimiter-2)$#|media/user/1/image/item/2018_27/b92f6f66c0fa7839b8f2|#$(delimiter-2)$#|0|#$(delimiter-1)$#|2|#$(delimiter-2)$#|media/user/1/image/item/2018_27/a34d31478bf47e2a7e7f|#$(delimiter-2)$#|0', '0', 17, 1, 'goose House'),
-(9, 1, 'chiromoni', 2, '30000', 1, '2018-07-06 22:48:53', '0', 'nice', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_27/d52328b829382fdb1a36|#$(delimiter-2)$#|0', '0', 29, 2, 'cool indeed'),
-(10, 1, 'Vumbwe', 2, '50000', 1, '2018-07-06 22:50:05', '1', 'really nice', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_27/38c63ce5bb6256c7c69d|#$(delimiter-2)$#|0|#$(delimiter-1)$#|1|#$(delimiter-2)$#|media/user/1/image/item/2018_27/7827d58fdea2434dd14d|#$(delimiter-2)$#|0', '0', 29, 2, 'right at the peek');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `item_condition`
---
-
-CREATE TABLE IF NOT EXISTS `item_condition` (
-  `condition_name` varchar(15) NOT NULL,
-  `condition_id` bigint(255) NOT NULL AUTO_INCREMENT,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
-  PRIMARY KEY (`condition_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
-
---
--- Dumping data for table `item_condition`
---
-
-INSERT INTO `item_condition` (`condition_name`, `condition_id`, `date`, `rank`) VALUES
-('Good', 1, '2016-04-10 08:28:18', '1'),
-('Perfect', 2, '2016-04-10 08:28:18', '2'),
-('Brand New', 3, '2016-04-10 08:28:37', '5'),
-('Excellent', 4, '2016-03-08 00:26:37', '3'),
-('Fairly used', 7, '2016-04-10 09:10:33', '1'),
-('Used', 9, '2016-04-10 09:10:33', '1');
+INSERT INTO `item` (`item_id`, `user_id`, `name`, `price`, `date`, `on_display`, `description`, `item_pic`, `deleted_by_seller`, `location_id`, `summary`, `model_id`, `year_of_make`, `body_type_id`, `fuel_type_id`, `exterior_color_id`, `interior_color_id`, `door_count`, `mileage`, `transmission_id`, `engine_size`, `condition_id`) VALUES
+(11, 1, 'toyota', '50000', '2018-08-07 10:09:55', '1', 'goo jkkj', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/dc8de9857c6e0076e491|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 700988, 1, 9798800, 1),
+(12, 1, 'Yellow Cab', '509999776', '2018-08-07 10:16:44', '1', 'yellow cab', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/61cf612d2c97ff1c75bc|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 82726, 1, 927365, 1);
 
 -- --------------------------------------------------------
 
@@ -541,6 +591,28 @@ INSERT INTO `message_subject` (`date`, `subject_id`, `subject`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `model`
+--
+
+CREATE TABLE IF NOT EXISTS `model` (
+  `name` varchar(15) NOT NULL,
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rank` enum('1','2','3','5','6','7','8','9','10') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `model`
+--
+
+INSERT INTO `model` (`name`, `id`, `date`, `rank`) VALUES
+('toyota', 1, '2018-08-07 09:18:53', '1'),
+('bmw', 2, '2018-08-07 09:18:53', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notification`
 --
 
@@ -708,10 +780,10 @@ INSERT INTO `sign_up_by_otp` (`user_type`, `password`, `name`, `date`, `status`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type`
+-- Table structure for table `transmission`
 --
 
-CREATE TABLE IF NOT EXISTS `type` (
+CREATE TABLE IF NOT EXISTS `transmission` (
   `name` varchar(15) NOT NULL,
   `id` bigint(255) NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -720,12 +792,12 @@ CREATE TABLE IF NOT EXISTS `type` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `type`
+-- Dumping data for table `transmission`
 --
 
-INSERT INTO `type` (`name`, `id`, `date`, `rank`) VALUES
-('For Sale', 1, '2016-04-10 08:28:18', '1'),
-('For Rent', 2, '2016-04-10 08:28:18', '2');
+INSERT INTO `transmission` (`name`, `id`, `date`, `rank`) VALUES
+('manual', 1, '2018-08-07 09:08:49', '1'),
+('automatic', 2, '2018-08-07 09:08:49', '1');
 
 -- --------------------------------------------------------
 
@@ -888,11 +960,15 @@ ALTER TABLE `followed_page`
 -- Constraints for table `item`
 --
 ALTER TABLE `item`
+  ADD CONSTRAINT `item_ibfk_13` FOREIGN KEY (`condition_id`) REFERENCES `condition` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `item_ibfk_2` FOREIGN KEY (`condition_id`) REFERENCES `item_condition` (`condition_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `item_ibfk_4` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `item_ibfk_5` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `item_ibfk_6` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `item_ibfk_10` FOREIGN KEY (`exterior_color_id`) REFERENCES `color` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_ibfk_11` FOREIGN KEY (`interior_color_id`) REFERENCES `color` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_ibfk_12` FOREIGN KEY (`transmission_id`) REFERENCES `transmission` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_ibfk_6` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_ibfk_7` FOREIGN KEY (`model_id`) REFERENCES `model` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_ibfk_8` FOREIGN KEY (`body_type_id`) REFERENCES `body_type` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_ibfk_9` FOREIGN KEY (`fuel_type_id`) REFERENCES `fuel_type` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `message`

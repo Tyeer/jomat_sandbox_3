@@ -1,7 +1,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Mpima Admin</span></a>
+              <a href="<?php echo base_url(); ?>" class="site_title"><i class="fa fa-paw"></i> <span> Admin Panel</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -18,10 +18,10 @@
                       <li><a href="<?php echo base_url(); ?>">View site</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Properties <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Cars <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url(); ?>add_property">Add</a></li>
-                      <li><a href="<?php echo base_url(); ?>admin">View Published properties</a></li>
+                      <li><a href="<?php echo base_url(); ?>admin">View Published cars</a></li>
                       <li><a href="<?php echo base_url(); ?>admin/draft">View Drafts</a></li>
                     </ul>
                   </li>

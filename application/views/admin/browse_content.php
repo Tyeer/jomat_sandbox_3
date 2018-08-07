@@ -53,7 +53,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Properities <small> controling panel</small></h3>
+                <h3>Cars <small> controling panel</small></h3>
               </div>
 
               <div class="title_right">
@@ -80,7 +80,7 @@
                             <th>
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
-                            <th class="column-title">Propert ID </th>
+                            <th class="column-title">Car ID </th>
                             <th class="column-title">Feature Image </th>
                             <th class="column-title">Title </th>
                             <th class="column-title">Date </th>

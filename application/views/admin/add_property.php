@@ -20,7 +20,7 @@
         assets/vendors/iCheck/icheck.min.js
      */
 
-    $page_data['page_title']='dd Property '.SITE_NAME;
+    $page_data['page_title']='Mpima Add Property';
     $page_data['css_links']=array( 'assets/css/admin.min.css',
                                     'assets/vendors/dropzone/dist/min/dropzone.min.css',
                                     'assets/vendors/Holdon/HoldOn.min.css',
@@ -59,7 +59,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add Property</h3>
+                <h3>Add a Car</h3>
               </div>
             </div>
 
@@ -80,9 +80,9 @@
                     <br />
                     <form class=" main_form form-horizontal form-label-left" action="<?php echo base_url(); ?>manage_products/upload/form" data-parsley-validate>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Propety Title<span class="required">*</span></label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Name<span class="required">*</span></label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" data-parsley-length="[4, 20]" name="name" placeholder="e.g House in Nyambadwe" required="required" 
+                          <input type="text" class="form-control" data-parsley-length="[4, 20]" name="name" placeholder="e.g Toyota Hilux" required="required" 
                             data-parsley-length-message="It should be between 4 to 20 characters"
                           >
                         </div>
@@ -91,26 +91,6 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Price</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input name="price" type="text" class="form-control" placeholder="e.g 30000" type="number" data-parsley-type="integer" data-parsley-length="[5, 10]" required="required" >
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select name="type" class="form-control">
-                            <?php foreach ($page_data['type']['data']['records'] as $key => $value): ?>
-                              <option  value="<?php echo $value['type_id'] ?>" ><?php echo $value['type_name'] ?></option>
-                            <?php endforeach ?>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select name="category" class="form-control">
-                            <?php foreach ($page_data['category']['data']['records'] as $key => $value): ?>
-                              <option  value="<?php echo $value['category_id'] ?>" ><?php echo $value['category_name'] ?></option>
-                            <?php endforeach ?>
-                          </select>
                         </div>
                       </div>
                       <div class="form-group">
@@ -142,15 +122,113 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Summary <span class="required">*</span>
-                        </label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Condition</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <textarea name="summary" class="form-control" rows="3"
-                              data-parsley-length="[10, 60]" name="name" placeholder="e.g. modern House in Nyambadwe with 4 bedrooms" required="required" 
-                            data-parsley-length-message="It should be between 10 to 60 characters"
-                          ></textarea>
+                          <select name="condition" class="form-control">
+                            <?php foreach ($page_data['condition']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['condition_id'] ?>" ><?php echo $value['condition_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
                         </div>
                       </div>
+                      
+                      <div class="ln_solid"></div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Model</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="model" class="form-control">
+                            <?php foreach ($page_data['model']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['model_id'] ?>" ><?php echo $value['model_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Year of Make</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="year_of_make" class="form-control">
+                            <?php for ($i=1990; $i <2030 ; $i++) :?>
+                                <option  value="<?php echo $i; ?>" > <?php echo $i; ?> </option>
+                             <?php endfor ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Mileage</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input name="mileage" type="text" class="form-control" placeholder="e.g 57000" type="number" data-parsley-type="integer" data-parsley-length="[5, 10]" required="required" >
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Engine Size</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input name="engine_size" type="text" class="form-control" placeholder="e.g 300" type="number" data-parsley-type="integer" data-parsley-length="[5, 10]" required="required" >
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Fuel Type</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="fuel_type" class="form-control">
+                            <?php foreach ($page_data['fuel_type']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['fuel_type_id'] ?>" ><?php echo $value['fuel_type_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Transmission</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="transmission" class="form-control">
+                            <?php foreach ($page_data['transmission']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['transmission_id'] ?>" ><?php echo $value['transmission_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Body Type</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="body_type" class="form-control">
+                            <?php foreach ($page_data['body_type']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['body_type_id'] ?>" ><?php echo $value['body_type_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Exterior Color</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="exColor" class="form-control">
+                            <?php foreach ($page_data['color']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['color_id'] ?>" ><?php echo $value['color_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Interior Color</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="inColor" class="form-control">
+                            <?php foreach ($page_data['color']['data']['records'] as $key => $value): ?>
+                              <option  value="<?php echo $value['color_id'] ?>" ><?php echo $value['color_name'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Door Count</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select name="door_count" class="form-control">
+                            <?php for ($i=2; $i <7 ; $i++) :?>
+                                <option  value="<?php echo $i; ?>" > <?php echo $i; ?> </option>
+                             <?php endfor ?>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Description <span class="required">*</span>
                         </label>

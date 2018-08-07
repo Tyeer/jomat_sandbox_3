@@ -1,5 +1,5 @@
 <?php
-class Category_model extends CI_Model {
+class CarModel_model extends CI_Model {
 
     //default variables
     private $addition_info="";
@@ -23,7 +23,7 @@ class Category_model extends CI_Model {
              $this->fail_result=false;
     } 
 
-	public function getCategory($filters=array())
+	public function getCarModel($filters=array())
 	{
 	        //reset variables
 			$this->reset_defaults();
@@ -35,7 +35,7 @@ class Category_model extends CI_Model {
 			$result=array();
 			$total_records=false;		 
 			$get_total_records=false;
-			$filteringCondtion=' AND ';
+			$filteringCarModel=' AND ';
 			$from=0;$take=20;		 
  
 			if(isset($filters['from']))
@@ -58,7 +58,7 @@ class Category_model extends CI_Model {
 
 			if(isset($filters['filtering_condtion']))
 			{ 	
-				$filteringCondtion=$filters['filtering_condtion'];
+				$filteringCarModel=$filters['filtering_condtion'];
 				unset($filters['filtering_condtion']);
 			}	
 
@@ -84,11 +84,11 @@ class Category_model extends CI_Model {
            		$miniWhereSubQueryArry=array();			   
 			   	foreach($valueFormated as $key2 => $value2)
 			   	{
-					if($key==='category_id' || ($key==='category_id'.$n) )
+					if($key==='model_id' || ($key==='model_id'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`id`=:id'.$n ); 
 						$n++;
-					}elseif($key==='category_name' || ($key==='category_name'.$n) )
+					}elseif($key==='model_name' || ($key==='model_name'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`name`=:name'.$n ); 
 						$n++;
@@ -109,9 +109,9 @@ class Category_model extends CI_Model {
 			}
 				
 			$WheresubQuery="";
-			$filteringCondtion=' '.$filteringCondtion.' ';
+			$filteringCarModel=' '.$filteringCarModel.' ';
 			if(!empty($WhereSubQueryArry))
-			$WheresubQuery='WHERE '.implode($filteringCondtion,$WhereSubQueryArry);			 
+			$WheresubQuery='WHERE '.implode($filteringCarModel,$WhereSubQueryArry);			 
 		 
 			$get_total_recordsQuery="";
 			if($get_total_records)
@@ -122,7 +122,7 @@ class Category_model extends CI_Model {
 			 
 			$dbquery1 =  $this->db->conn_id->prepare("									
 														SELECT ".$get_total_recordsQuery." * 
-														FROM `category` 
+														FROM `model` 
 														 	".$WheresubQuery."
 
 														GROUP BY `id`
@@ -144,10 +144,10 @@ class Category_model extends CI_Model {
 
 				   	foreach($valueFormated as $key2 => $value2)
 				   	{					   
-						if($key==='category_id' || ($key==='category_id'.$n) ) 
+						if($key==='model_id' || ($key==='model_id'.$n) ) 
 						{$dbquery1->bindValue(":id".$n,$value2); 	$n++;}
 						
-						if($key==='category_name' || ($key==='category_name'.$n) ) 
+						if($key==='model_name' || ($key==='model_name'.$n) ) 
 						{$dbquery1->bindValue(":name".$n,$value2); $n++; }
 						
 									
@@ -181,10 +181,9 @@ class Category_model extends CI_Model {
 						
 							//do some format
 							$result[$key]=array(									
-												"category_id"=>$value['id'],
-												"category_name"=>$value['name'],
-												"category_rank"=>$value['rank'],
-												"parent_id"=>$value['parent_id'],
+												"model_id"=>$value['id'],
+												"model_name"=>$value['name'],
+												"model_rank"=>$value['rank'],
 												);
 						}
 					}

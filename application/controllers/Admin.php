@@ -52,6 +52,9 @@ class Admin extends CI_Controller {
 
 		$data['page_data']= array();	
 		$data['page_data']['item']= $model_data;	
+		
+		//echo "<pre>";
+		//print_r($data);
 		$this->load->view('admin/browse_content',$data);
 
 	}
@@ -129,22 +132,36 @@ class Admin extends CI_Controller {
           0. load classes
         #######################################*/		    
 
-          $this->load->model('Type_model');
-          $this->load->model('Category_model');
+          $this->load->model('CarModel_model');
+          $this->load->model('Transmission_model');
+          $this->load->model('Body_type_model');
+          $this->load->model('Fuel_type_model');
+          $this->load->model('Color_model');
+          $this->load->model('Condition_model');
           $this->load->model('Location_model');
         
 		/*########################################
           1. Get Data from Database using Models
         #######################################*/		    
    		
-		$type =$this->Type_model->getType(); 
-		$category =$this->Category_model->getCategory(); 
+		$model =$this->CarModel_model->getCarModel(); 
+		//$category =$this->Category_model->getCategory(); 
 		$location =$this->Location_model->getLocation(); 
+		$transmission =$this->Transmission_model->getTransmission(); 
+		$body_type =$this->Body_type_model->getBody_type(); 
+		$fuel_type =$this->Fuel_type_model->getFuel_type(); 
+		$color =$this->Color_model->getColor(); 
+		$condition =$this->Condition_model->getCondition(); 
 
 
 		$data['page_data']= array();
-		$data['page_data']['type']= $type;	
-		$data['page_data']['category']= $category;	
+		$data['page_data']['model']= $model;	
+		$data['page_data']['transmission']= $transmission;	
+		$data['page_data']['body_type']= $body_type;	
+		$data['page_data']['fuel_type']= $fuel_type;	
+		$data['page_data']['color']= $color;	
+		$data['page_data']['condition']= $condition;	
+		//$data['page_data']['category']= $category;	
 		$data['page_data']['location']= $location;	
 
 
@@ -194,6 +211,42 @@ class Admin extends CI_Controller {
 						                				),
 						            ),
 						        array(
+						                'field' => 'mileage',
+						                'label' => 'mileage',
+						                'rules' => 'required|numeric',
+						                'errors' => array(
+						                				'required' => 'Mileage is required',
+								                        'numeric' => 'Provide number only',
+						                				),
+						            ),
+						        array(
+						                'field' => 'year_of_make',
+						                'label' => 'year_of_make',
+						                'rules' => 'required|numeric',
+						                'errors' => array(
+						                				'required' => 'Year of make is required',
+								                        'numeric' => 'Provide number only',
+						                				),
+						            ),
+						        array(
+						                'field' => 'door_count',
+						                'label' => 'door_count',
+						                'rules' => 'required|numeric',
+						                'errors' => array(
+						                				'required' => 'Number of doors is required',
+								                        'numeric' => 'Provide number only',
+						                				),
+						            ),
+						        array(
+						                'field' => 'engine_size',
+						                'label' => 'engine_size',
+						                'rules' => 'required|numeric',
+						                'errors' => array(
+						                				'required' => 'Engine Size is required',
+								                        'numeric' => 'Provide number only',
+						                				),
+						            ),
+						        array(
 						                'field' => 'description',
 						                'label' => 'Description',
 						                'rules' => 'max_length[2000]',
@@ -210,8 +263,48 @@ class Admin extends CI_Controller {
 						                				),	 		                
 						        	),
 						        array(
-						                'field' => 'category',
-						                'label' => 'Category',
+						                'field' => 'model',
+						                'label' => 'model',
+						                'rules' => 'required',
+						                'errors' => array(
+						                				'required' => 'system_error',
+						                				),	 		                
+						        	),
+						        array(
+						                'field' => 'fuel_type',
+						                'label' => 'fuel_type',
+						                'rules' => 'required',
+						                'errors' => array(
+						                				'required' => 'system_error',
+						                				),	 		                
+						        	),
+						        array(
+						                'field' => 'transmission',
+						                'label' => 'transmission',
+						                'rules' => 'required',
+						                'errors' => array(
+						                				'required' => 'system_error',
+						                				),	 		                
+						        	),
+						        array(
+						                'field' => 'body_type',
+						                'label' => 'body_type',
+						                'rules' => 'required',
+						                'errors' => array(
+						                				'required' => 'system_error',
+						                				),	 		                
+						        	),
+						        array(
+						                'field' => 'exColor',
+						                'label' => 'exColor',
+						                'rules' => 'required',
+						                'errors' => array(
+						                				'required' => 'system_error',
+						                				),	 		                
+						        	),
+						        array(
+						                'field' => 'inColor',
+						                'label' => 'inColor',
 						                'rules' => 'required',
 						                'errors' => array(
 						                				'required' => 'system_error',
@@ -234,14 +327,6 @@ class Admin extends CI_Controller {
 									                        
 									                    ),
 								    ),
-						        array(
-						                'field' => 'type',
-						                'label' => 'Type',
-						                'rules' => 'required',
-						                'errors' => array(
-						                				'required' => 'system_error',
-						                				),	 		                
-						        	),
 						        array(
 						                'field' => 'input1',
 						                'label' => 'Image',
@@ -267,8 +352,7 @@ class Admin extends CI_Controller {
 							        	));
  		}	        			
 		
-   							                   
-
+   		
 
  		//validate
         $this->form_validation->set_rules($validationRules['rule1']);
@@ -294,11 +378,25 @@ class Admin extends CI_Controller {
 			// control the error messsages
    			$errors = $this->form_validation->error_array();
    			// define them
-   			if(!isset($errors['type']))$errors['type']='';
+   			if(!isset($errors['body_type']))$errors['body_type']='';
+   			if(!isset($errors['fuel_type']))$errors['fuel_type']='';
+   			if(!isset($errors['model']))$errors['model']='';
+   			if(!isset($errors['inColor']))$errors['inColor']='';
+   			if(!isset($errors['inColor']))$errors['inColor']='';
+   			if(!isset($errors['exColor']))$errors['exColor']='';
+   			if(!isset($errors['door_count']))$errors['door_count']='';
+   			if(!isset($errors['condition']))$errors['condition']='';
    			if(!isset($errors['location']))$errors['location']='';
-   			if(!isset($errors['category']))$errors['category']='';
+   			if(!isset($errors['transmission']))$errors['transmission']='';
 
-   			if(($errors['type']=='system_error' || $errors['location']=='system_error' || $errors['category']=='system_error') && !$commonErrors)
+   			if(($errors['body_type']=='system_error' || 
+   				 $errors['fuel_type']=='system_error' || 
+   				 $errors['model']=='system_error' || 
+   				 $errors['condition']=='system_error' || 
+   				 $errors['inColor']=='system_error' || 
+   				 $errors['exColor']=='system_error' || 
+   				 $errors['door_count']=='system_error' || 
+   				 $errors['transmission']=='system_error') && !$commonErrors)
    			{
    				$addition_info='system error';	
    			}
@@ -320,13 +418,21 @@ class Admin extends CI_Controller {
        		$pass_data = array(	'user_id' => $_SESSION['user_id'],
        							'name' => $this->input->post('name',true),
        							'price' => $this->input->post('price',true),
-       							'category_id' => $this->input->post('category',true),
        							'location_id' => $this->input->post('location',true),
-       							'type_id' => $this->input->post('type',true),
        							'front_pic' => $this->input->post('input1',true),
        							'on_display' => $this->input->post('on_display',true),
        							'description' => $this->input->post('description',true),
-       							'summary' => $this->input->post('summary',true),
+       							'model_id' => $this->input->post('model',true),
+       							'transmission_id' => $this->input->post('transmission',true),
+       							'body_type_id' => $this->input->post('body_type',true),
+       							'fuel_type_id' => $this->input->post('fuel_type',true),
+       							'exterior_color_id' => $this->input->post('exColor',true),
+       							'interior_color_id' => $this->input->post('inColor',true),
+       							'mileage' => $this->input->post('mileage',true),
+       							'engine_size' => $this->input->post('engine_size',true),
+       							'door_count' => $this->input->post('door_count',true),
+       							'door_count' => $this->input->post('door_count',true),
+       							'year_of_make' => $this->input->post('year_of_make',true),
        						);
        		$pass_data['addPic']=array();
        		for ($i=1; $i <13 ; $i++) { 
@@ -342,8 +448,7 @@ class Admin extends CI_Controller {
        		$status=$model_data['status'];
        		$result_info=$model_data['data']['result_info'];
        		$item_id=$model_data['data']['item_id'];
-       }
-       
+       }       
 
        //check if is ajax call
        if($this->input->is_ajax_request())

@@ -691,16 +691,7 @@ class Item_model extends CI_Model {
 			   foreach($valueFormated as $key2 => $value2)
 			   {
 
-			   		if($key==='category_id' || ($key==='category_id'.$n) )
-					{
-						array_push($miniWhereSubQueryArry,'`category_id`=:category_id'.$n ); 
-						$n++;
-					}elseif($key==='not_category_id' || ($key==='not_category_id'.$n) )
-					{
-						array_push($miniWhereSubQueryArry,'`category_id`!=:not_category_id'.$n ); 
-						$n++;
-					}
-					elseif($key==='location_id' || ($key==='location_id'.$n) )
+			   		if($key==='location_id' || ($key==='location_id'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`location_id`=:location_id'.$n ); 
 						$n++;
@@ -709,13 +700,64 @@ class Item_model extends CI_Model {
 						array_push($miniWhereSubQueryArry,'`location_id`!=:not_location_id'.$n ); 
 						$n++;
 					}
-					elseif($key==='type_id' || ($key==='type_id'.$n) )
+					
+					elseif($key==='transmission_id' || ($key==='transmission_id'.$n) )
 					{
-						array_push($miniWhereSubQueryArry,'`type_id`=:type_id'.$n ); 
+						array_push($miniWhereSubQueryArry,'`transmission_id`=:transmission_id'.$n ); 
 						$n++;
-					}elseif($key==='not_type_id' || ($key==='not_type_id'.$n) )
+					}elseif($key==='not_transmission_id' || ($key==='not_transmission_id'.$n) )
 					{
-						array_push($miniWhereSubQueryArry,'`type_id`!=:not_type_id'.$n ); 
+						array_push($miniWhereSubQueryArry,'`transmission_id`!=:not_transmission_id'.$n ); 
+						$n++;
+					}
+					
+					elseif($key==='model_id' || ($key==='model_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`model_id`=:model_id'.$n ); 
+						$n++;
+					}elseif($key==='not_model_id' || ($key==='not_model_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`model_id`!=:not_model_id'.$n ); 
+						$n++;
+					}
+					
+					elseif($key==='exterior_color_id' || ($key==='exterior_color_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`exterior_color_id`=:exterior_color_id'.$n ); 
+						$n++;
+					}elseif($key==='not_exterior_color_id' || ($key==='not_exterior_color_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`exterior_color_id`!=:not_exterior_color_id'.$n ); 
+						$n++;
+					}
+					
+					elseif($key==='interior_color_id' || ($key==='interior_color_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`interior_color_id`=:interior_color_id'.$n ); 
+						$n++;
+					}elseif($key==='not_interior_color_id' || ($key==='not_interior_color_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`interior_color_id`!=:not_interior_color_id'.$n ); 
+						$n++;
+					}
+					
+					elseif($key==='fuel_type_id' || ($key==='fuel_type_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`fuel_type_id`=:fuel_type_id'.$n ); 
+						$n++;
+					}elseif($key==='not_fuel_type_id' || ($key==='not_fuel_type_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`fuel_type_id`!=:not_fuel_type_id'.$n ); 
+						$n++;
+					}
+
+					elseif($key==='body_type_id' || ($key==='body_type_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`body_type_id`=:body_type_id'.$n ); 
+						$n++;
+					}elseif($key==='not_body_type_id' || ($key==='not_body_type_id'.$n) )
+					{
+						array_push($miniWhereSubQueryArry,'`body_type_id`!=:not_body_type_id'.$n ); 
 						$n++;
 					}elseif($key==='verification' || ($key==='verification'.$n) )
 					{
@@ -808,21 +850,7 @@ class Item_model extends CI_Model {
 																			SELECT `user_pic` , `user_id` AS `s4_user_id`
 																			FROM `profile_pic`
 																			) AS `s4` ON  `s4`.`s4_user_id`= `s1`.`user_id`
-																			
-																			LEFT JOIN( 
-																			SELECT `parent_name` AS `category_parent_name`,`parent_id` AS `category_parent_id`, `name` AS `category_name`, `id` AS `s5_category_id`
-																			FROM `category` `s5_a1`
-																					LEFT JOIN( SELECT `name` As parent_name,`id` AS `s5_b1_category_id` 
-																								FROM `category` 
-																					)AS `s5_b1` ON  `s5_b1`.`s5_b1_category_id` = `s5_a1`.`parent_id`							
-																			) AS `s5` ON  `s5`.`s5_category_id`= `s1`.`category_id`
 																					
-																			LEFT JOIN( 
-																			SELECT `condition_name`, `condition_id` AS `s6_condition_id`
-																			FROM `item_condition`
-																			) AS `s6` ON  `s6`.`s6_condition_id`= `s1`.`condition_id`
-																					
-
 																			LEFT JOIN (SELECT  `user_id` AS `s7_user_id`,
 																			CASE WHEN ISNULL(`rank`) THEN '0' ELSE `rank` END  AS `user_rank`,
 																			CASE WHEN ISNULL(`verification`) THEN 'unverified' ELSE `verification` END  AS `verification`
@@ -835,14 +863,44 @@ class Item_model extends CI_Model {
 																			) AS `s8` ON `s8`.`s8_user_id` = `s1`.`user_id`
 																						
 																			LEFT JOIN( 
-																			SELECT `name` AS `type_name`, `id` AS `s10_type_id`
-																			FROM `type`
-																			) AS `s10` ON  `s10`.`s10_type_id`= `s1`.`type_id`
+																			SELECT `name` AS `body_type_name`, `id` AS `s10_body_type_id`
+																			FROM `body_type`
+																			) AS `s10` ON  `s10`.`s10_body_type_id`= `s1`.`body_type_id`
 																					
 																			LEFT JOIN( 
 																			SELECT `name` AS `location_name`, `id` AS `s11_location_id`
 																			FROM `location`
 																			) AS `s11` ON  `s11`.`s11_location_id`= `s1`.`location_id`
+
+																			LEFT JOIN( 
+																			SELECT `name` AS `fuel_type_name`, `id` AS `s12_fuel_type_id`
+																			FROM `fuel_type`
+																			) AS `s12` ON  `s12`.`s12_fuel_type_id`= `s1`.`fuel_type_id`
+
+																			LEFT JOIN( 
+																			SELECT `name` AS `transmission_name`, `id` AS `s13_transmission_id`
+																			FROM `transmission`
+																			) AS `s13` ON  `s13`.`s13_transmission_id`= `s1`.`transmission_id`
+
+																			LEFT JOIN( 
+																			SELECT `name` AS `interior_color_name`, `id` AS `s14_interior_color_id`
+																			FROM `color`
+																			) AS `s14` ON  `s14`.`s14_interior_color_id`= `s1`.`interior_color_id`
+
+																			LEFT JOIN( 
+																			SELECT `name` AS `exterior_color_name`, `id` AS `s15_exterior_color_id`
+																			FROM `color`
+																			) AS `s15` ON  `s15`.`s15_exterior_color_id`= `s1`.`exterior_color_id`
+
+																			LEFT JOIN( 
+																			SELECT `name` AS `model_name`, `id` AS `s16_model_id`
+																			FROM `model`
+																			) AS `s16` ON  `s16`.`s16_model_id`= `s1`.`model_id`
+
+																			LEFT JOIN( 
+																			SELECT `name` AS `condition_name`, `id` AS `s17_condition_id`
+																			FROM `condition`
+																			) AS `s17` ON  `s17`.`s17_condition_id`= `s1`.`condition_id`
 							                                ) `s_whole`
 																		
 																".$WheresubQuery."
@@ -864,14 +922,36 @@ class Item_model extends CI_Model {
 
 			   foreach($valueFormated as $key2 => $value2)
 			   {					   
-					if($key==='category_id' || ($key==='category_id'.$n) ) 
-					{$dbquery1->bindValue(":category_id".$n,$value2); 	$n++;}
+					if($key==='transmission_id' || ($key==='transmission_id'.$n) ) 
+					{$dbquery1->bindValue(":transmission_id".$n,$value2); 	$n++;}
+					if($key==='not_transmission_id' || ($key==='not_transmission_id'.$n) ) 
+					{$dbquery1->bindValue(":not_transmission_id".$n,$value2); 	$n++;}
+
+					if($key==='fuel_type_id' || ($key==='fuel_type_id'.$n) ) 
+					{$dbquery1->bindValue(":fuel_type_id".$n,$value2); 	$n++;}
+					if($key==='not_fuel_type_id' || ($key==='not_fuel_type_id'.$n) ) 
+					{$dbquery1->bindValue(":not_fuel_type_id".$n,$value2); 	$n++;}
+
+					if($key==='model_id' || ($key==='model_id'.$n) ) 
+					{$dbquery1->bindValue(":model_id".$n,$value2); 	$n++;}
+					if($key==='not_model_id' || ($key==='not_model_id'.$n) ) 
+					{$dbquery1->bindValue(":not_model_id".$n,$value2); 	$n++;}
+
+					if($key==='exterior_color_id' || ($key==='exterior_color_id'.$n) ) 
+					{$dbquery1->bindValue(":exterior_color_id".$n,$value2); 	$n++;}
+					if($key==='not_exterior_color_id' || ($key==='not_exterior_color_id'.$n) ) 
+					{$dbquery1->bindValue(":not_exterior_color_id".$n,$value2); 	$n++;}
+
+					if($key==='interior_color_id' || ($key==='interior_color_id'.$n) ) 
+					{$dbquery1->bindValue(":interior_color_id".$n,$value2); 	$n++;}
+					if($key==='not_interior_color_id' || ($key==='not_interior_color_id'.$n) ) 
+					{$dbquery1->bindValue(":not_interior_color_id".$n,$value2); 	$n++;}
 
 					if($key==='location_id' || ($key==='location_id'.$n) ) 
 					{$dbquery1->bindValue(":location_id".$n,$value2); 	$n++;}
 
-					if($key==='type_id' || ($key==='type_id'.$n) ) 
-					{$dbquery1->bindValue(":type_id".$n,$value2); 	$n++;}
+					if($key==='body_type_id' || ($key==='body_type_id'.$n) ) 
+					{$dbquery1->bindValue(":body_type_id".$n,$value2); 	$n++;}
 					
 					if($key==='condition' || ($key==='condition'.$n) ) 
 					{$dbquery1->bindValue(":condition".$n,$value2); $n++; }
@@ -890,9 +970,6 @@ class Item_model extends CI_Model {
 														
 					if($key==='deleted_by_seller' || ($key==='deleted_by_seller'.$n) ) 
 					{$dbquery1->bindValue(":deleted_by_seller".$n,$value2); $n++; }
-
-					if($key==='not_category_id' || ($key==='not_category_id'.$n) ) 
-					{$dbquery1->bindValue(":not_category_id".$n,$value2); 	$n++;}
 
 					if($key==='not_condition' || ($key==='not_condition'.$n) ) 
 					{$dbquery1->bindValue(":not_condition".$n,$value2); $n++; }
@@ -995,15 +1072,15 @@ class Item_model extends CI_Model {
 				}
 			}						
 
-			//get the items' groups of categories
+
+			//get the items' groups transmission
 			if(!$this->fail_result)
 			{
 
 				$dbquery4 =  $this->db->conn_id->prepare("	
-															SELECT COUNT(*) AS `itemsPerCategory`,`category_id`,
-																	`category_parent_name` AS `parent_name`,`category_parent_id` AS `parent_id`,`category_name`
+															SELECT COUNT(*) AS `itemsPer_transmission`,`transmission_name`
 															FROM `temp_table`
-															GROUP BY `category_id`											
+															GROUP BY `transmission_id`											
 															LIMIT 15									
 														");
 					
@@ -1018,7 +1095,7 @@ class Item_model extends CI_Model {
 					$this->addition_info = $dbquery4->errorInfo();
 					//$this->addition_info = 'error_100';
 				}
-			}	
+			}
 
 			//get the items' groups of location
 			if(!$this->fail_result)
@@ -1044,14 +1121,14 @@ class Item_model extends CI_Model {
 				}
 			}	
 
-			//get the items' groups of location
+			//get the items' groups of
 			if(!$this->fail_result)
 			{
 
 				$dbquery6 =  $this->db->conn_id->prepare("	
-															SELECT COUNT(*) AS `itemsPerType`,`type_name`
+															SELECT COUNT(*) AS `itemsPer_body_type`,`body_type_name`
 															FROM `temp_table`
-															GROUP BY `type_id`											
+															GROUP BY `body_type_id`											
 															LIMIT 15									
 														");
 					
@@ -1066,7 +1143,103 @@ class Item_model extends CI_Model {
 					$this->addition_info = $dbquery6->errorInfo();
 					//$this->addition_info = 'error_100';
 				}
-			}		
+			}	
+
+			//get the items' groups of
+			if(!$this->fail_result)
+			{
+
+				$dbquery7 =  $this->db->conn_id->prepare("	
+															SELECT COUNT(*) AS `itemsPer_fuel_type`,`fuel_type_name`
+															FROM `temp_table`
+															GROUP BY `fuel_type_id`											
+															LIMIT 15									
+														");
+					
+				if(!$dbquery7->execute())
+				{
+					$this->status=false;
+					!$this->fail_result=true;
+					//echo '<pre>';
+					//print_r($valueFormated);
+					//print_r($dbquery1);
+					//print_r($dbquery1->errorInfo());
+					$this->addition_info = $dbquery7->errorInfo();
+					//$this->addition_info = 'error_100';
+				}
+			}	
+
+			//get the items' groups of
+			if(!$this->fail_result)
+			{
+
+				$dbquery8 =  $this->db->conn_id->prepare("	
+															SELECT COUNT(*) AS `itemsPer_model`,`model_name`
+															FROM `temp_table`
+															GROUP BY `model_id`											
+															LIMIT 15									
+														");
+					
+				if(!$dbquery8->execute())
+				{
+					$this->status=false;
+					!$this->fail_result=true;
+					//echo '<pre>';
+					//print_r($valueFormated);
+					//print_r($dbquery1);
+					//print_r($dbquery1->errorInfo());
+					$this->addition_info = $dbquery8->errorInfo();
+					//$this->addition_info = 'error_100';
+				}
+			}	
+
+			//get the items' groups of
+			if(!$this->fail_result)
+			{
+
+				$dbquery9 =  $this->db->conn_id->prepare("	
+															SELECT COUNT(*) AS `itemsPer_exterior_color`,`exterior_color_name`
+															FROM `temp_table`
+															GROUP BY `exterior_color_id`											
+															LIMIT 15									
+														");
+					
+				if(!$dbquery9->execute())
+				{
+					$this->status=false;
+					!$this->fail_result=true;
+					//echo '<pre>';
+					//print_r($valueFormated);
+					//print_r($dbquery1);
+					//print_r($dbquery1->errorInfo());
+					$this->addition_info = $dbquery9->errorInfo();
+					//$this->addition_info = 'error_100';
+				}
+			}	
+
+			//get the items' groups of
+			if(!$this->fail_result)
+			{
+
+				$dbquery10 =  $this->db->conn_id->prepare("	
+															SELECT COUNT(*) AS `itemsPer_interior_color`,`interior_color_name`
+															FROM `temp_table`
+															GROUP BY `interior_color_id`											
+															LIMIT 15									
+														");
+					
+				if(!$dbquery10->execute())
+				{
+					$this->status=false;
+					!$this->fail_result=true;
+					//echo '<pre>';
+					//print_r($valueFormated);
+					//print_r($dbquery1);
+					//print_r($dbquery1->errorInfo());
+					$this->addition_info = $dbquery10->errorInfo();
+					//$this->addition_info = 'error_100';
+				}
+			}	
 
 			//delete the temp table
 			if(!$this->fail_result)
@@ -1095,9 +1268,13 @@ class Item_model extends CI_Model {
 
 				#collect for items'group
 			   	$itemsPerVerification = $dbquery3->fetchAll();
-			   	$itemsPerCategory = $dbquery4->fetchAll();
+			   	$itemsPer_transmission = $dbquery4->fetchAll();
 			   	$itemsPerLocation = $dbquery5->fetchAll();
-			   	$itemsPerType = $dbquery6->fetchAll();
+			   	$itemsPer_body_type = $dbquery6->fetchAll();
+			   	$itemsPer_fuel_type = $dbquery7->fetchAll();
+			   	$itemsPer_model = $dbquery8->fetchAll();
+			   	$itemsPer_exterior_color = $dbquery9->fetchAll();
+			   	$itemsPer_interior_color = $dbquery10->fetchAll();
 				
 				#collect for item
 			  	$this->status = true;
@@ -1196,21 +1373,29 @@ class Item_model extends CI_Model {
 											"on_display"=>$value['on_display'],
 											"date"=>$value['date'],
 											"price"=>$value['price'],
-											"category_id"=>$value['category_id'],
-											"category_name"=>$value['category_name'],
-											"category_parent_name"=>$value['category_parent_name'],
-											"category_parent_id"=>$value['category_parent_id'],
+											"transmission_id"=>$value['transmission_id'],
+											"transmission_name"=>$value['transmission_name'],
 											"user_verification"=>$value['verification'],
-											"condition_name`"=>$value['condition_name'],
+											"condition_name"=>$value['condition_name'],
 											"condition_id"=>$value['condition_id'],
-											"type_id"=>$value['type_id'],
-											"type_name"=>$value['type_name'],
+											"body_type_id"=>$value['body_type_id'],
+											"body_type_name"=>$value['body_type_name'],
 											"location_id"=>$value['location_id'],
 											"location_name"=>$value['location_name'],
+											"model_id"=>$value['model_id'],
+											"model_name"=>$value['model_name'],
+											"fuel_type_id"=>$value['fuel_type_id'],
+											"fuel_type_name"=>$value['fuel_type_name'],
+											"exterior_color_id"=>$value['exterior_color_id'],
+											"exterior_color_name"=>$value['exterior_color_name'],
+											"interior_color_id"=>$value['interior_color_id'],
+											"interior_color_name"=>$value['interior_color_name'],
 											"item_description"=>$value['description'],
 											"user_profile_pic"=>$profile_picArray,
 											"user_name"=>$value['user_name'],									
-											"user_about"=>$value['about'],												
+											"user_about"=>$value['about'],											
+											"door_count"=>$value['door_count'],										
+											"mileage"=>$value['mileage'],											
 											"summary"=>$value['summary'],												
 											);
 					}
@@ -1222,9 +1407,13 @@ class Item_model extends CI_Model {
 											   'count'=>$count,
 											   'total_records'=>$total_records,
 											   'itemsPerVerification'=>$itemsPerVerification,
-											   'itemsPerCategory'=>$itemsPerCategory,
+											   'itemsPer_transmission'=>$itemsPer_transmission,
 											   'itemsPerLocation'=>$itemsPerLocation,
-											   'itemsPerType'=>$itemsPerType,
+											   'itemsPer_body_type'=>$itemsPer_body_type,
+											   'itemsPer_fuel_type'=>$itemsPer_fuel_type,
+											   'itemsPer_exterior_color'=>$itemsPer_exterior_color,
+											   'itemsPer_interior_color'=>$itemsPer_interior_color,
+											   'itemsPer_model'=>$itemsPer_model,
 											   ),
 	                            "addition_info"=>$this->addition_info);	   	       
 	}
@@ -1255,11 +1444,20 @@ class Item_model extends CI_Model {
 	    if(!isset($data['front_pic'])) $data['front_pic']='';
 	    if(!isset($data['description'])) $data['description']='';
 	    if(!isset($data['summary'])) $data['summary']='';
+	    if(!isset($data['mileage'])) $data['mileage']='';
+	    if(!isset($data['engine_size'])) $data['engine_size']='';
+	    if(!isset($data['door_count'])) $data['door_count']='';
+	    if(!isset($data['year_of_make'])) $data['year_of_make']='';
 	    if(!isset($data['location_id'])) $data['locati_idon']='';
-	    if(!isset($data['type_id'])) $data['type_id']='';
+	    if(!isset($data['body_type_id'])) $data['body_type_id']='';
 	    if(!isset($data['name'])) $data['name']='';
 	    if(!isset($data['condition_id'])) $data['condition_id']=1;
-	    if(!isset($data['category_id'])) $data['category_id']='';
+	    if(!isset($data['transmission_id'])) $data['transmission_id']='';
+	    if(!isset($data['fuel_type_id'])) $data['fuel_type_id']='';
+	    if(!isset($data['model_id'])) $data['model_id']='';
+	    if(!isset($data['exterior_color_id'])) $data['exterior_color_id']='';
+	    if(!isset($data['interior_color_id'])) $data['interior_color_id']='';
+	    if(!isset($data['interior_color_id'])) $data['interior_color_id']='';
 	    if(!isset($data['price'])) $data['price']='';
 	    if(!isset($data['on_display'])) $data['on_display']=1;// default is to put it on display 
 
@@ -1405,23 +1603,31 @@ class Item_model extends CI_Model {
 	    if(!$this->fail_result)   
 	    {             
 			$dbquery2=$this->db->conn_id->prepare("
-							INSERT INTO `item`(`user_id`,`item_pic`,`name`,`category_id`,`price`,
-												`condition_id`,`on_display`,`description`,`summary`,`location_id`,`type_id`) 
-							VALUES(:user_id,:item_pic,:name,:category_id,:price,:condition_id,:on_display,
-									:description,:summary,:location_id,:type_id)
+							INSERT INTO `item`(`user_id`,`item_pic`,`name`,`transmission_id`,`price`,
+												`condition_id`,`on_display`,`description`,`summary`,`location_id`,`body_type_id`,`model_id`,`fuel_type_id`,`exterior_color_id`,`interior_color_id`,`door_count`,`mileage`,`year_of_make`,`engine_size`) 
+							VALUES(:user_id,:item_pic,:name,:transmission_id,:price,:condition_id,:on_display,
+									:description,:summary,:location_id,:body_type_id,:model_id,:fuel_type_id,:exterior_color_id,:interior_color_id,:door_count,:mileage,:year_of_make,:engine_size)
 			");
 			$data['user_id']=preg_replace("/[^a-zA-Z0-9]+/","",$data['user_id']);
 			$dbquery2->bindParam(":user_id",$data['user_id']);
 			$dbquery2->bindParam(":item_pic",$replaceRecordsString);
 			$dbquery2->bindParam(":name",$data['name']);
-			$dbquery2->bindParam(":category_id",$data['category_id']);
+			$dbquery2->bindParam(":transmission_id",$data['transmission_id']);
 			$dbquery2->bindParam(":price",$data['price']);
 			$dbquery2->bindParam(":on_display",$data['on_display']);
 			$dbquery2->bindParam(":description",$data['description']);
 			$dbquery2->bindParam(":summary",$data['summary']);
 			$dbquery2->bindParam(":condition_id",$data['condition_id']);      
 			$dbquery2->bindParam(":location_id",$data['location_id']);      
-			$dbquery2->bindParam(":type_id",$data['type_id']);      
+			$dbquery2->bindParam(":body_type_id",$data['body_type_id']);      
+			$dbquery2->bindParam(":mileage",$data['mileage']);      
+			$dbquery2->bindParam(":engine_size",$data['engine_size']);      
+			$dbquery2->bindParam(":door_count",$data['door_count']);      
+			$dbquery2->bindParam(":year_of_make",$data['year_of_make']);      
+			$dbquery2->bindParam(":model_id",$data['model_id']);      
+			$dbquery2->bindParam(":exterior_color_id",$data['exterior_color_id']);      
+			$dbquery2->bindParam(":interior_color_id",$data['interior_color_id']);      
+			$dbquery2->bindParam(":fuel_type_id",$data['fuel_type_id']);      
 	        
 
 	        if(!($dbquery2->execute()))

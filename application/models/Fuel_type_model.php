@@ -1,5 +1,5 @@
 <?php
-class Condition_model extends CI_Model {
+class Fuel_type_model extends CI_Model {
 
     //default variables
     private $addition_info="";
@@ -23,7 +23,7 @@ class Condition_model extends CI_Model {
              $this->fail_result=false;
     } 
 
-	public function getCondition($filters=array())
+	public function getFuel_type($filters=array())
 	{
 	        //reset variables
 			$this->reset_defaults();
@@ -35,7 +35,7 @@ class Condition_model extends CI_Model {
 			$result=array();
 			$total_records=false;		 
 			$get_total_records=false;
-			$filteringCondition=' AND ';
+			$filteringFuelType=' AND ';
 			$from=0;$take=20;		 
  
 			if(isset($filters['from']))
@@ -58,7 +58,7 @@ class Condition_model extends CI_Model {
 
 			if(isset($filters['filtering_condition']))
 			{ 	
-				$filteringCondition=$filters['filtering_condition'];
+				$filteringFuelType=$filters['filtering_condition'];
 				unset($filters['filtering_condition']);
 			}	
 
@@ -84,11 +84,11 @@ class Condition_model extends CI_Model {
            		$miniWhereSubQueryArry=array();			   
 			   	foreach($valueFormated as $key2 => $value2)
 			   	{
-					if($key==='condition_id' || ($key==='condition_id'.$n) )
+					if($key==='fuel_type_id' || ($key==='fuel_type_id'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`id`=:id'.$n ); 
 						$n++;
-					}elseif($key==='condition_name' || ($key==='condition_name'.$n) )
+					}elseif($key==='fuel_type_name' || ($key==='fuel_type_name'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`name`=:name'.$n ); 
 						$n++;
@@ -109,9 +109,9 @@ class Condition_model extends CI_Model {
 			}
 				
 			$WheresubQuery="";
-			$filteringCondition=' '.$filteringCondition.' ';
+			$filteringFuelType=' '.$filteringFuelType.' ';
 			if(!empty($WhereSubQueryArry))
-			$WheresubQuery='WHERE '.implode($filteringCondition,$WhereSubQueryArry);			 
+			$WheresubQuery='WHERE '.implode($filteringFuelType,$WhereSubQueryArry);			 
 		 
 			$get_total_recordsQuery="";
 			if($get_total_records)
@@ -122,7 +122,7 @@ class Condition_model extends CI_Model {
 			 
 			$dbquery1 =  $this->db->conn_id->prepare("									
 														SELECT ".$get_total_recordsQuery." * 
-														FROM `condition` 
+														FROM `fuel_type` 
 														 	".$WheresubQuery."
 
 														GROUP BY `id`
@@ -144,10 +144,10 @@ class Condition_model extends CI_Model {
 
 				   	foreach($valueFormated as $key2 => $value2)
 				   	{					   
-						if($key==='condition_id' || ($key==='condition_id'.$n) ) 
+						if($key==='fuel_type_id' || ($key==='fuel_type_id'.$n) ) 
 						{$dbquery1->bindValue(":id".$n,$value2); 	$n++;}
 						
-						if($key==='condition_name' || ($key==='condition_name'.$n) ) 
+						if($key==='fuel_type_name' || ($key==='fuel_type_name'.$n) ) 
 						{$dbquery1->bindValue(":name".$n,$value2); $n++; }
 						
 									
@@ -181,9 +181,9 @@ class Condition_model extends CI_Model {
 						
 							//do some format
 							$result[$key]=array(									
-												"condition_id"=>$value['id'],
-												"condition_name"=>$value['name'],
-												"condition_rank"=>$value['rank'],
+												"fuel_type_id"=>$value['id'],
+												"fuel_type_name"=>$value['name'],
+												"fuel_type_rank"=>$value['rank'],
 												);
 						}
 					}

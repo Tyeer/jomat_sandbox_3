@@ -254,16 +254,16 @@ class Listings extends CI_Controller {
           3. load classes
         #######################################*/		    
 
-          $this->load->model('Type_model');
-          $this->load->model('Category_model');
+          //$this->load->model('Type_model');
+          //$this->load->model('Category_model');
           $this->load->model('Location_model');
 
         /*########################################
           4. Get Data from Database using Models
          #######################################*/  
 
-		$type =$this->Type_model->getType(); 
-		$category =$this->Category_model->getCategory(); 
+		//$type =$this->Type_model->getType(); 
+		//$category =$this->Category_model->getCategory(); 
 		$location =$this->Location_model->getLocation(); 
 
    		$pass_data['from']=$take_from;
@@ -294,8 +294,8 @@ class Listings extends CI_Controller {
 		############################### */
 
    		$data['page_data']= array();			
-		$data['page_data']['type']= $type;	
-		$data['page_data']['category']= $category;	
+		//$data['page_data']['type']= $type;	
+		//$data['page_data']['category']= $category;	
 		$data['page_data']['location']= $location;	
 
 			/*
@@ -339,7 +339,7 @@ class Listings extends CI_Controller {
 		/*########################################
           1. Get Data from Database using Models
         #######################################*/		    
-   		/*$pass_data = array(	'item_id' => $this->uri->segment(2)
+   		$pass_data = array(	'item_id' => $this->uri->segment(2)
    						   );
 
    		$model_data=$this->item_model->getItem($pass_data);
@@ -366,14 +366,16 @@ class Listings extends CI_Controller {
 			if(strlen($value['item_name'])>23)
 				$model_data['data']['records'][$key]['item_name']=$this->general_functions->wordTrimmer($value['item_name'],23,'&hellip;');
 
-   		}*/
+   		}
 
 		/*########################################
           2. Send data to view
         #######################################*/		    
 
+          //echo'<pre>';
+          //print_r($model_data);
 		$data['page_data']= array();	
-		//$data['page_data']['item']= $model_data;	
+		$data['page_data']['item']= $model_data;	
 		$this->load->view('listings/listings_single',$data);
 
 	}

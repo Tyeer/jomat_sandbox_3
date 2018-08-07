@@ -1,5 +1,5 @@
 <?php
-class Condition_model extends CI_Model {
+class Color_model extends CI_Model {
 
     //default variables
     private $addition_info="";
@@ -23,7 +23,7 @@ class Condition_model extends CI_Model {
              $this->fail_result=false;
     } 
 
-	public function getCondition($filters=array())
+	public function getColor($filters=array())
 	{
 	        //reset variables
 			$this->reset_defaults();
@@ -35,7 +35,7 @@ class Condition_model extends CI_Model {
 			$result=array();
 			$total_records=false;		 
 			$get_total_records=false;
-			$filteringCondition=' AND ';
+			$filteringolor=' AND ';
 			$from=0;$take=20;		 
  
 			if(isset($filters['from']))
@@ -58,7 +58,7 @@ class Condition_model extends CI_Model {
 
 			if(isset($filters['filtering_condition']))
 			{ 	
-				$filteringCondition=$filters['filtering_condition'];
+				$filteringolor=$filters['filtering_condition'];
 				unset($filters['filtering_condition']);
 			}	
 
@@ -84,11 +84,11 @@ class Condition_model extends CI_Model {
            		$miniWhereSubQueryArry=array();			   
 			   	foreach($valueFormated as $key2 => $value2)
 			   	{
-					if($key==='condition_id' || ($key==='condition_id'.$n) )
+					if($key==='color_id' || ($key==='color_id'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`id`=:id'.$n ); 
 						$n++;
-					}elseif($key==='condition_name' || ($key==='condition_name'.$n) )
+					}elseif($key==='color_name' || ($key==='color_name'.$n) )
 					{
 						array_push($miniWhereSubQueryArry,'`name`=:name'.$n ); 
 						$n++;
@@ -109,9 +109,9 @@ class Condition_model extends CI_Model {
 			}
 				
 			$WheresubQuery="";
-			$filteringCondition=' '.$filteringCondition.' ';
+			$filteringolor=' '.$filteringolor.' ';
 			if(!empty($WhereSubQueryArry))
-			$WheresubQuery='WHERE '.implode($filteringCondition,$WhereSubQueryArry);			 
+			$WheresubQuery='WHERE '.implode($filteringolor,$WhereSubQueryArry);			 
 		 
 			$get_total_recordsQuery="";
 			if($get_total_records)
@@ -122,7 +122,7 @@ class Condition_model extends CI_Model {
 			 
 			$dbquery1 =  $this->db->conn_id->prepare("									
 														SELECT ".$get_total_recordsQuery." * 
-														FROM `condition` 
+														FROM `color` 
 														 	".$WheresubQuery."
 
 														GROUP BY `id`
@@ -144,10 +144,10 @@ class Condition_model extends CI_Model {
 
 				   	foreach($valueFormated as $key2 => $value2)
 				   	{					   
-						if($key==='condition_id' || ($key==='condition_id'.$n) ) 
+						if($key==='color_id' || ($key==='color_id'.$n) ) 
 						{$dbquery1->bindValue(":id".$n,$value2); 	$n++;}
 						
-						if($key==='condition_name' || ($key==='condition_name'.$n) ) 
+						if($key==='color_name' || ($key==='color_name'.$n) ) 
 						{$dbquery1->bindValue(":name".$n,$value2); $n++; }
 						
 									
@@ -181,9 +181,9 @@ class Condition_model extends CI_Model {
 						
 							//do some format
 							$result[$key]=array(									
-												"condition_id"=>$value['id'],
-												"condition_name"=>$value['name'],
-												"condition_rank"=>$value['rank'],
+												"color_id"=>$value['id'],
+												"color_name"=>$value['name'],
+												"color_rank"=>$value['rank'],
 												);
 						}
 					}
