@@ -91,7 +91,7 @@ class Attach_image {
     
     //thum and medium sized images are resized and cropped. 
     //this is so to remove the extra height/width if the image exceed the specified crop height or width
-    //and this is also due to ci as it can not resize and crop an image thru a sing action so they (actions) have to be looped
+    //and this is also due to ci as it can not resize and crop an image thru a single action so they (actions) have to be looped
 
      if(!$fail_result)
        {
@@ -107,18 +107,42 @@ class Attach_image {
               if($i==0)//thumbnail
               {
                   $pdata['new_image']         = $temp_directory.$pic_ref.'_t.jpg';
-                  if($file_data['image_height']>150)
-                    $pdata['height']         = 150;
-                  else
-                    $pdata['height']         = $file_data['image_height'];
+                 
+                  $pdata['width']         = 255;
+                  $pdata['maintain_ratio'] = true;
+
+              }elseif($i==4)//thumb - crop
+              {              
+
+                  $pdata['new_image']         = $temp_directory.$pic_ref.'_t.jpg';              
+                  $pdata['source_image']         = $temp_directory.$pic_ref.'_t.jpg';              
+                  $pdata['action'] = 'crop';
+                  $pdata['maintain_ratio'] = false;
+                  $pdata['height']         = 160;
+                  $pdata['width']         = 255;
+
+                  $heightRatio = $file_data['image_height'] / $pdata['height'];
+                  $widthRatio  = $file_data['image_width'] /  $pdata['width'];
+
+                  if ($heightRatio < $widthRatio) {
+                    $optimalRatio = $heightRatio;
+                  } else {
+                    $optimalRatio = $widthRatio;
+                  }
+
+                  $optimalHeight = $file_data['image_height'] / $optimalRatio;
+                  $optimalWidth  = $file_data['image_width']  / $optimalRatio;
+
+                  $pdata['x_axis']= ( $optimalWidth / 2) - ( $pdata['width'] /2 );
+                  $pdata['y_axis'] = ( $optimalHeight/ 2) - ( $pdata['height']/2 );
+
 
               }elseif($i==1)//medium
               {
                 $pdata['new_image']         = $temp_directory.$pic_ref.'_m.jpg';              
-                  if($file_data['image_height']>300)
-                    $pdata['height']         = 300;
-                  else
-                    $pdata['height']         = $file_data['image_height'];
+                  
+                  $pdata['width']         = 400;
+                  $pdata['maintain_ratio'] = true;
 
               }elseif($i==3)//medium - crop
               {              
@@ -127,58 +151,27 @@ class Attach_image {
                       $skip = true;
                     }                 
 
-                $pdata['new_image']         = $temp_directory.$pic_ref.'_m.jpg';              
-                $pdata['source_image']         = $temp_directory.$pic_ref.'_m.jpg';              
+                  $pdata['new_image']         = $temp_directory.$pic_ref.'_m.jpg';              
+                  $pdata['source_image']         = $temp_directory.$pic_ref.'_m.jpg';              
                   $pdata['action'] = 'crop';
                   $pdata['maintain_ratio'] = false;
                   $pdata['height']         = 300;
-                  $pdata['width']         = 300;
+                  $pdata['width']         = 400;
 
                   $heightRatio = $file_data['image_height'] / $pdata['height'];
-          $widthRatio  = $file_data['image_width'] /  $pdata['width'];
+                  $widthRatio  = $file_data['image_width'] /  $pdata['width'];
 
-          if ($heightRatio < $widthRatio) {
-            $optimalRatio = $heightRatio;
-          } else {
-            $optimalRatio = $widthRatio;
-          }
+                  if ($heightRatio < $widthRatio) {
+                    $optimalRatio = $heightRatio;
+                  } else {
+                    $optimalRatio = $widthRatio;
+                  }
 
-          $optimalHeight = $file_data['image_height'] / $optimalRatio;
-          $optimalWidth  = $file_data['image_width']  / $optimalRatio;
+                  $optimalHeight = $file_data['image_height'] / $optimalRatio;
+                  $optimalWidth  = $file_data['image_width']  / $optimalRatio;
 
-          $pdata['x_axis']= ( $optimalWidth / 2) - ( $pdata['width'] /2 );
-          $pdata['y_axis'] = ( $optimalHeight/ 2) - ( $pdata['height']/2 );
-
-
-              }elseif($i==4)//thumb - crop
-              {              
-
-                    if($file_data['image_width']<=$file_data['image_height'])
-                    {
-                      $skip = true;
-                    } 
-
-                $pdata['new_image']         = $temp_directory.$pic_ref.'_t.jpg';              
-                $pdata['source_image']         = $temp_directory.$pic_ref.'_t.jpg';              
-                  $pdata['action'] = 'crop';
-                  $pdata['maintain_ratio'] = false;
-                  $pdata['height']         = 150;
-                  $pdata['width']         = 150;
-
-                  $heightRatio = $file_data['image_height'] / $pdata['height'];
-          $widthRatio  = $file_data['image_width'] /  $pdata['width'];
-
-          if ($heightRatio < $widthRatio) {
-            $optimalRatio = $heightRatio;
-          } else {
-            $optimalRatio = $widthRatio;
-          }
-
-          $optimalHeight = $file_data['image_height'] / $optimalRatio;
-          $optimalWidth  = $file_data['image_width']  / $optimalRatio;
-
-          $pdata['x_axis']= ( $optimalWidth / 2) - ( $pdata['width'] /2 );
-          $pdata['y_axis'] = ( $optimalHeight/ 2) - ( $pdata['height']/2 );
+                  $pdata['x_axis']= ( $optimalWidth / 2) - ( $pdata['width'] /2 );
+                  $pdata['y_axis'] = ( $optimalHeight/ 2) - ( $pdata['height']/2 );
 
 
               }elseif($i==2)//normal
@@ -196,14 +189,14 @@ class Attach_image {
               }
 
               if(!$fail_result && !$skip)
-            { 
-              $model_data = $this->manipulate_image($pdata);
-              $addition_info=$model_data['addition_info'];
-              $status=$model_data['status'];
-              $result_info=$model_data['data']['result_info'];
-            }
+              { 
+                $model_data = $this->manipulate_image($pdata);
+                $addition_info=$model_data['addition_info'];
+                $status=$model_data['status'];
+                $result_info=$model_data['data']['result_info'];
+              }
             
-            if(!$status) $fail_result=true;
+              if(!$status) $fail_result=true;
 
               $i++;
           } while (!$fail_result && $i<5);

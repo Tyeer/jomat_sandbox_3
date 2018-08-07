@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2018 at 02:00 PM
+-- Generation Time: Aug 08, 2018 at 12:32 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -291,15 +291,20 @@ CREATE TABLE IF NOT EXISTS `item` (
   KEY `transmission_id` (`transmission_id`),
   KEY `condition_id` (`condition_id`),
   FULLTEXT KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `item`
 --
 
 INSERT INTO `item` (`item_id`, `user_id`, `name`, `price`, `date`, `on_display`, `description`, `item_pic`, `deleted_by_seller`, `location_id`, `summary`, `model_id`, `year_of_make`, `body_type_id`, `fuel_type_id`, `exterior_color_id`, `interior_color_id`, `door_count`, `mileage`, `transmission_id`, `engine_size`, `condition_id`) VALUES
-(11, 1, 'toyota', '50000', '2018-08-07 10:09:55', '1', 'goo jkkj', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/dc8de9857c6e0076e491|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 700988, 1, 9798800, 1),
-(12, 1, 'Yellow Cab', '509999776', '2018-08-07 10:16:44', '1', 'yellow cab', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/61cf612d2c97ff1c75bc|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 82726, 1, 927365, 1);
+(16, 1, 'Bmw1', '300000', '2018-08-07 20:25:41', '1', 'this is the best of all', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/44a6994193b60952b21c|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 0, 1, 2.6, 1),
+(17, 1, 'BMW I8 ''2013 ', '1250002', '2018-08-07 20:36:15', '1', 'bmw, 5 litre engine', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/be4383cbfd370393e2d0|#$(delimiter-2)$#|0', '0', 29, '', 1, 2013, 1, 1, 1, 1, 2, 0, 1, 2.5, 1),
+(18, 1, 'BMW I6 ''2010 ', '2000000', '2018-08-07 20:40:05', '1', 'this is the best', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/c49996877bac7edab875|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 0, 1, 1.2, 1),
+(19, 1, 'BMW I3 ''2012', '3000022', '2018-08-07 20:42:04', '1', 'New car', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/8c874745bab0840d58a4|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 20000, 1, 1.2, 1),
+(20, 1, 'Ford', '400000', '2018-08-07 20:50:05', '1', 'good for adventure', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/0235877b7bbbf2f68f73|#$(delimiter-2)$#|0', '0', 29, '', 1, 1990, 1, 1, 1, 1, 2, 0, 1, 3.1, 1),
+(21, 1, 'Bugatti Veyron ''2013', '45000000', '2018-08-07 21:00:37', '1', 'fastest car for real', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/4a6c76a667e56cee2436|#$(delimiter-2)$#|0', '0', 4, '', 1, 2010, 1, 1, 1, 1, 2, 0, 1, 2.3, 1),
+(22, 1, 'Honda', '2000000', '2018-08-07 21:30:52', '1', 'nice car', '0|#$(delimiter-2)$#|media/user/1/image/item/2018_32/c6b22bf3776e1b8a1416|#$(delimiter-2)$#|0', '0', 4, '', 1, 1990, 1, 1, 1, 1, 2, 0, 1, 2.1, 1);
 
 -- --------------------------------------------------------
 

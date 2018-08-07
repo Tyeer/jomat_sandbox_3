@@ -213,10 +213,9 @@ class Admin extends CI_Controller {
 						        array(
 						                'field' => 'mileage',
 						                'label' => 'mileage',
-						                'rules' => 'required|numeric',
+						                'rules' => 'numeric',
 						                'errors' => array(
-						                				'required' => 'Mileage is required',
-								                        'numeric' => 'Provide number only',
+						                				'numeric' => 'Provide number only',
 						                				),
 						            ),
 						        array(

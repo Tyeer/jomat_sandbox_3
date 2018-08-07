@@ -82,15 +82,15 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Name<span class="required">*</span></label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" data-parsley-length="[4, 20]" name="name" placeholder="e.g Toyota Hilux" required="required" 
-                            data-parsley-length-message="It should be between 4 to 20 characters"
+                          <input type="text" class="form-control" data-parsley-length="[2, 40]" name="name" placeholder="e.g Toyota Hilux" required="required" 
+                            data-parsley-length-message="It should be between 4 to 40 characters"
                           >
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Price</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input name="price" type="text" class="form-control" placeholder="e.g 30000" type="number" data-parsley-type="integer" data-parsley-length="[5, 10]" required="required" >
+                          <input name="price" type="text" class="form-control" placeholder="e.g 30000" type="number" data-parsley-type="integer" data-parsley-length="[3, 10]" required="required" >
                         </div>
                       </div>
                       <div class="form-group">
@@ -157,14 +157,14 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Mileage</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input name="mileage" type="text" class="form-control" placeholder="e.g 57000" type="number" data-parsley-type="integer" data-parsley-length="[5, 10]" required="required" >
+                          <input name="mileage" type="text" class="form-control" placeholder="e.g 57000" type="number" data-parsley-type="integer" >
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Engine Size</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input name="engine_size" type="text" class="form-control" placeholder="e.g 300" type="number" data-parsley-type="integer" data-parsley-length="[5, 10]" required="required" >
+                          <input name="engine_size" type="text" class="form-control" placeholder="e.g 300" type="number" data-parsley-pattern="^[0-9]*\.[0-9]$" data-parsley-length="[1, 10]" required="required" >
                         </div>
                       </div>
                       <div class="form-group">

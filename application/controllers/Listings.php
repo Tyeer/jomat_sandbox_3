@@ -269,8 +269,7 @@ class Listings extends CI_Controller {
    		$pass_data['from']=$take_from;
    		$pass_data['take']=$records_per_page;
    		$pass_data['get_total_records']=true;
-   		$pass_data['category_id']=4;
-
+   		
 
 		$model_data=$this->item_model->getItem($pass_data);
 		   		//do some formating to the results
@@ -319,7 +318,6 @@ class Listings extends CI_Controller {
 			 	End For Pagination 
 			###############################
 		    */
-
 		$data['page_data']['item']= $model_data;	
 		$data['page_data']['url_parameters']= $url_parameters;	
 		$this->load->view('listings/listings_cars',$data);

@@ -39,9 +39,8 @@ class Home extends CI_Controller {
           2. Get Data from Database using Models
          #######################################*/  
    		$pass_data['from']=0;
-   		$pass_data['take']=4;
+   		$pass_data['take']=8;
    		$pass_data['get_total_records']=true;
-   		$pass_data['category_id']=2;
 
 
 		$model_data=$this->item_model->getItem($pass_data);
@@ -63,6 +62,8 @@ class Home extends CI_Controller {
    		}
 
 		$data['page_data']['item']= $model_data;	
+		
+		
 		$this->load->view('home/home',$data);
 
 	}

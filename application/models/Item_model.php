@@ -1396,7 +1396,8 @@ class Item_model extends CI_Model {
 											"user_about"=>$value['about'],											
 											"door_count"=>$value['door_count'],										
 											"mileage"=>$value['mileage'],											
-											"summary"=>$value['summary'],												
+											"engine_size"=>$value['engine_size'],
+											"summary"=>$value['summary'],																	
 											);
 					}
 				}
@@ -1444,7 +1445,7 @@ class Item_model extends CI_Model {
 	    if(!isset($data['front_pic'])) $data['front_pic']='';
 	    if(!isset($data['description'])) $data['description']='';
 	    if(!isset($data['summary'])) $data['summary']='';
-	    if(!isset($data['mileage'])) $data['mileage']='';
+	    if(!isset($data['mileage'])) $data['mileage']=0;
 	    if(!isset($data['engine_size'])) $data['engine_size']='';
 	    if(!isset($data['door_count'])) $data['door_count']='';
 	    if(!isset($data['year_of_make'])) $data['year_of_make']='';
