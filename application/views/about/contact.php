@@ -113,22 +113,7 @@
 							</div>
 							<!--/ .row-->
 						</div>
-						<!--/ .container-->
-						<section id="section_1281026018294" class="padding-bottom-40">
-							<div class="container-fluid">
-								<div  class="row">
-									<div class="col-md-12">
-										<div class="google_map" id="google_map_5b423fc8ca658" style="height: 400px;"></div>
-										<script type="text/javascript">
-											jQuery(function() {
-												gmt_init_map(40.714623,-74.006605, "google_map_5b423fc8ca658", 11, "ROADMAP", "12 Street, Los Angeles, CA, 94101", "1", "0", "0",{}, "0");
-											});
-										</script>
-									</div>
-								</div>
-							</div>
-							<!--/ .container-->
-						</section>
+
 						<section id="section_515337354420" class="padding-top-40 padding-bottom-40">
 							<div class="container">
 								<div  class="row">
@@ -137,10 +122,10 @@
 										</p>
 										<p>
 										<ul class="our-contacts">
-											<li class="address"><b>Address Info:</b> Lorem ipsum Dolor sit amet, 658 Consectetur, Adipisicing 56 D</li>
-											<li class="phone"><b>Phone:</b> +1 (234) 567-8901  </li>
-											<li class="fax"><b>FAX:</b> +1 (234) 567-8902</li>
-											<li class="email"><b>Email:</b> <a href="mailto:testmail@sitename.com">testmail@sitename.com</a></li>
+											<li class="address"><b>Address Info:</b> chingombe house, chichiri , blantyre 3</li>
+											<li class="phone"><b>Phone:</b> + (265) 991843315  </li>
+											<li class="fax"><b>TEL:</b> + (265) 1178966</li>
+											<li class="email"><b>Email:</b> <a href="mailto:testmail@sitename.com">jomat@info.com</a></li>
 										</ul>
 									</div>
 									<div class="col-md-8">
@@ -165,12 +150,7 @@
 												<label for="message_5b423fc8cacef">Your Message: <span class="required">*</span></label>
 												<textarea id="message_5b423fc8cacef"  required name="messagebody5a855e0657bd6"></textarea>
 											</p>
-											<p class="input-block">
-												<label>Are you human?</label>
-												<img class="contact_form_capcha" src="../wp-content/themes/cardealer/helper/capcha/image6061.png?hash=7e5b4ed399ab458c7703920c6a1e04f7" height="29" width="72" alt="CAPTCHA image" />
-												<input type="text" value="" name="verify" class="verify" />
-												<input type="hidden" name="verify_code" value="7e5b4ed399ab458c7703920c6a1e04f7" />
-											</p>
+
 											<!--/ .row-->
 											<p class="input-block">
 												<button class="lc-button orange medium" type="submit">Submit</button>
@@ -196,8 +176,8 @@
 									<div id="text-2" class="widget widget_text">
 										<h3 class="widget-title">About Us</h3>
 										<div class="textwidget">
-											<p class="white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+											<p class="white">We are professionals at selling second hand vehicles. look no further</p>
+											<p>The only recognised car dealer in Malawi. drive with a smile. we sell cars that take you to places</p>
 										</div>
 									</div>
 								</div>
@@ -247,37 +227,12 @@
 								<div class="col-md-3">
 									<div class="widget widget_contacts">
 										<h3 class="widget-title">Our Contacts</h3>
-										<ul class="contacts-list">
-											<li class="icon-warehouse">
-												Lorem ipsum Dolor sit amet, 658 Consectetur, Adipisicing 56 D			
-											</li>
-											<li class="icon-phone">
-												+1 (234) 567-8901			
-											</li>
-											<li class="icon-print-3">
-												+1 (234) 567-8902			
-											</li>
-											<li class="icon-email">
-												<a href="mailto:testmail@sitename.com">testmail@sitename.com</a>
-											</li>
-											<li>
-												<ul class="social-icons">
-													<li class="twitter">
-														<a target="_blank" title="twitter" href="http://twitter.com/ThemeMakers">
-														<i class="icon-twitter-3"></i>
-														</a>
-													</li>
-													<li class="facebook">
-														<a target="_blank" title="facebook" href="http://facebook.com/wpThemeMakers">
-														<i class="icon-facebook"></i>
-														</a>
-													</li>
-													<li class="rss">
-														<a title="rss" href="../feed/index.html">
-														<i class="icon-rss"></i>
-														</a>
-													</li>
-												</ul>
+										<ul class="our-contacts">
+											<li class="address"><b>Address Info:</b> chingombe house, chichiri , blantyre 3</li>
+											<li class="phone"><b>Phone:</b> + (265) 991843315  </li>
+											<li class="fax"><b>TEL:</b> + (265) 1178966</li>
+											<li class="email"><b>Email:</b> <a href="mailto:testmail@sitename.com">jomat@info.com</a></li>
+										</ul>
 												<!--/ .social-icons-->
 											</li>
 										</ul>
@@ -285,19 +240,7 @@
 									</div>
 									<!--/ .widget-->				
 								</div>
-								<div class="col-md-3">
-									<div class="widget widget_gmap">
-										<h3 class="widget-title">Our Location</h3>
-										<script type="text/javascript">
-											jQuery(window).on('load', function(){
-												var address = 'New York';
-												jQuery('.google_image_5b423fc8cc0e8')
-													.html('<img src="' + encodeURI('https://maps.googleapis.com/maps/api/staticmap?center=40.714623,-74.006605&amp;zoom=12&amp;maptype=roadmap&amp;size=253x253&amp;key=AIzaSyByr7q4xavGXbdnvlII42we-lBNEOkSQaQ&amp;') + '" width="253" height="253" alt="' + address.split('+').join(' ') + '">');
-											});
-										</script>
-										<div class="google_image_5b423fc8cc0e8"></div>
-									</div>
-								</div>
+
 							</div>
 							<!--/ .row-->
 							<div class="row">
